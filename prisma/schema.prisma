@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Artpiece {
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  author      Author?     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId    String?     @db.ObjectId
+  createdAt   DateTime    @default(now())
+  image       String      @default("https://img.freepik.com/free-vector/images-concept-illustration_114360-298.jpg?w=826&t=st=1677560232~exp=1677560832~hmac=62d93f22492ccd0af71e9d40365b50733b2031ad24f08e049aba6302a119cfab")
+  type        String
+  name        String
+  dimensions  String?
+  description String?
+  buyable     Boolean
+  price       Int?
+  year        Int
+}
+
+model Author {
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt   DateTime    @default(now())
+  image       String      @default("https://mybroadband.co.za/news/wp-content/uploads/2017/04/Twitter-profile-picture.jpg")
+  name        String
+  country     String
+  birthYear   Int
+  deathYear   Int?
+  description String?
+  pieces      Artpiece[]
+}
