@@ -1,5 +1,9 @@
-import prisma from '../lib/prisma'
+// context type for parameters
 import { Context } from './context'
+
+// interface to define argument objects passed to resolvers
+interface argsGetUnique { id: string }
+interface argsGetByName { name: string }
 
 export const resolvers = {
     Query: {
@@ -15,7 +19,40 @@ export const resolvers = {
             }
         }),
 
-        getArtpiece: () => {},
-        getAuthor: () => {},
+        getArtpieceById: async (_parent: undefined, args: argsGetUnique, ctx: Context) => await ctx.prisma.artpiece.findUnique({
+            where: {
+                id: args.id
+            }
+        }),
+
+        getAuthorById: async (_parent: undefined, args: argsGetUnique, ctx: Context) => await ctx.prisma.author.findUnique({
+            where: {
+                id: args.id
+            }
+        }),
+
+        getArtpiecesByName: async (_parent: undefined, args: argsGetByName, ctx: Context) => await ctx.prisma.artpiece.findMany({
+            where: {
+                name: {
+                    contains: args.name
+                }
+            },
+
+            include: {
+                author: true
+            }
+        }),
+
+        getAuthorsByName: async (_parent: undefined, args: argsGetByName, ctx: Context) => await ctx.prisma.author.findMany({
+            where: {
+                name: {
+                    contains: args.name
+                }
+            },
+            
+            include: {
+                pieces: true
+            }
+        }),
     }
 }
