@@ -11,7 +11,7 @@ export const typeDefs = gql`
         buyable: Boolean!
         price: Int
         year: Int!
-        author: Author!
+        author: Author
     }
 
     type Author {
