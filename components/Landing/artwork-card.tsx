@@ -10,7 +10,7 @@ const ArtworkCard: React.FC<ArtworkCardProps> = (props) => {
     const { img } = props.data
 
     return (
-        <div className='w-[200px] h-[200px] bg-[#0A0A0A] rounded-lg'>
+        <div className='w-[200px] h-[200px] bg-[#0A0A0A] rounded-lg drop-shadow-xl transition-colors duration-300'>
             <img src={img}
                 className='object-cover rounded-lg shadow-xl w-[200px] h-[200px] group-hover:opacity-50 transition-all duration-300 absolute' />
 

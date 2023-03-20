@@ -1,12 +1,8 @@
-import { invert } from '../../redux/slices/darkSlice'
-import { useDispatch } from 'react-redux'
-
-import { BsPaletteFill, BsSun, BsFillMoonFill } from 'react-icons/bs'
+import ToggleDark from './toggle-dark'
+import { BsPaletteFill } from 'react-icons/bs'
 import { motion } from 'framer-motion'
 
 const Banner: React.FC = () => {
-    const dispatch = useDispatch()
-
     return (
         <div>
             {/* header */}
@@ -16,15 +12,9 @@ const Banner: React.FC = () => {
                     <span className="text-4xl ml-[15px] font-oswald font-semibold">artitude</span>
                 </div>
 
-                <button className='flex flex-row ml-auto dark:bg-[#171B26] bg-[#586577] rounded-2xl' onClick={() => dispatch(invert())}>
-                    <div className="dark:bg-[#FDDD96] bg-[#586577] py-[6px] px-[10px] rounded-2xl flex items-center">
-                        <BsFillMoonFill className="text-lg dark:text-[#171B26] text-[#b9b9b9]" />
-                    </div>
-
-                    <div className="dark:bg-[#171B26] bg-[#FDDD96] py-[5px] px-[10px] rounded-2xl">
-                        <BsSun className="text-xl dark:text-[#b9b9b9] text-[#171B26]" />
-                    </div>
-                </button>
+                <div className="ml-auto">
+                    <ToggleDark />
+                </div>
             </header>
 
             {/* presentation */}

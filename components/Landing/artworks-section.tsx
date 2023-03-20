@@ -10,7 +10,7 @@ const IMAGES: ArtworkCardProps['data'][] = [
 
 const Artworks: React.FC = () => {
     return (
-        <div className='w-full bg-[#FDDD96] pt-[80px] pb-[100px] flex flex-col mx-auto dark:text-[#0A0A0A] text-[#171B26]'>
+        <div className='w-full dark:bg-[#FDDD96] bg-[#95A4B9] pt-[80px] pb-[100px] flex flex-col mx-auto dark:text-[#0A0A0A] text-white'>
             <div className='mx-auto'>
                 <div className='text-center mx-auto w-fit'>
                     <h1 className='text-3xl font-bold font-rubik mb-[10px]'>Featured Artworks</h1>
