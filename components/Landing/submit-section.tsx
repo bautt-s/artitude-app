@@ -14,7 +14,7 @@ const Submit: React.FC = () => {
                     whileInView={{ opacity: 1, translateX: 0 }} transition={{ duration: 0.35, delay: 0.15 }}>
                     <h2 className='text-lg font-bold font-rubik text-[#FDDD96]'>SUBMIT</h2>
                     <h1 className='font-rubik text-3xl text-white font-bold mt-[10px] mb-[10px]'>Want to submit an Artpiece or Artist?</h1>
-                    <p className='font-rubik text-2xl text-white'>Maybe you feel like we are missing something or someone.<br /> In that case, we invite you to complete our database!</p>
+                    <p className='font-rubik text-2xl text-white'>Maybe you feel like we are missing something or someone.<br /> In that case, we invite you to expand our database!</p>
 
                     <button className='text-xl font-rubik text-[#171B26] font-bold mt-[40px] bg-[#FDDD96] px-[20px] py-[10px] rounded-lg hover:bg-[#ddbf7f] active:bg-[#bea369] transition-all duration-300'>
                         Collaborate

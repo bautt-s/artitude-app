@@ -9,33 +9,33 @@ import FeatureCard, { FeatureCardProps } from './feature-card'
 const FEATURES: FeatureCardProps['data'][] = [{
     title: 'Art Search',
     text: 'Finding exactly what inspires you the most, has never been so simple.',
-    icon: <BiSearchAlt className='text-4xl text-[#0A0A0A]' />
+    icon: <BiSearchAlt className='text-4xl dark:text-[#0A0A0A] text-[#171B26]' />
 },
 {
     title: 'High Resolution',
     text: 'We provide you with high resolution links to your favourite images.',
-    icon: <ImFilePicture className='text-3xl text-[#0A0A0A]' />
+    icon: <ImFilePicture className='text-3xl dark:text-[#0A0A0A] text-[#171B26]' />
 },
 {
     title: 'Art on Sale',
     text: 'Looking to get yourself a masterpiece? Filter through buyable pieces.',
-    icon: <GiReceiveMoney className='text-3xl text-[#0A0A0A]' />
+    icon: <GiReceiveMoney className='text-3xl dark:text-[#0A0A0A] text-[#171B26]' />
 },
 {
     title: 'Author Details',
     text: 'Love a certain artist? Find what other pieces they may have for show.',
-    icon: <BsPersonFill className='text-4xl text-[#0A0A0A]' />
+    icon: <BsPersonFill className='text-4xl dark:text-[#0A0A0A] text-[#171B26]' />
 }]
 
 const Features: React.FC = () => {
     return (
-        <div className="pt-[120px] pb-[60px] bg-[#0A0A0A] w-full" >
+        <div className="pt-[120px] pb-[60px] dark:bg-[#0A0A0A] bg-white w-full transition-colors duration-300" >
             <div className='flex flex-col'>
                 <div className='mx-auto'>
-                    <h2 className='text-lg font-bold font-rubik text-[#FDDD96]'>FEATURES</h2>
-                    <h1 className='text-3xl font-bold font-rubik mt-[10px] mb-[10px] text-white'>Main Features</h1>
+                    <h2 className='text-lg font-bold font-rubik dark:text-[#FDDD96] text-[#e4c073]'>FEATURES</h2>
+                    <h1 className='text-3xl font-bold font-rubik mt-[10px] mb-[10px] dark:text-white text-[#171B26]'>Main Features</h1>
 
-                    <div className='flex flex-col text-2xl font-rubik text-white'>
+                    <div className='flex flex-col text-2xl font-rubik dark:text-white text-[#171B26]'>
                         <span>Look into any type or style of artwork you are looking for. Filter them by any of their</span>
                         <span>attributes and find out if, by any chance, they are currently in sale at the moment.</span>
                     </div>

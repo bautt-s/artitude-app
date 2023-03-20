@@ -10,7 +10,7 @@ const IMAGES: ArtworkCardProps['data'][] = [
 
 const Artworks: React.FC = () => {
     return (
-        <div className='w-full bg-[#FDDD96] pt-[80px] pb-[100px] flex flex-col mx-auto text-[#0A0A0A]'>
+        <div className='w-full bg-[#FDDD96] pt-[80px] pb-[100px] flex flex-col mx-auto dark:text-[#0A0A0A] text-[#171B26]'>
             <div className='mx-auto'>
                 <div className='text-center mx-auto w-fit'>
                     <h1 className='text-3xl font-bold font-rubik mb-[10px]'>Featured Artworks</h1>
@@ -20,7 +20,7 @@ const Artworks: React.FC = () => {
                 <div className='grid justify-center gap-16 grid-cols-4 w-fit'>
                     {IMAGES.map((image, index) => {
                         return (
-                            <motion.div className='group cursor-pointer transition duration-100'
+                            <motion.div key={index} className='group cursor-pointer transition duration-100'
                                 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: index * 0.1, duration: 0.25 }}>
                                     <ArtworkCard data={image} />
                             </motion.div>

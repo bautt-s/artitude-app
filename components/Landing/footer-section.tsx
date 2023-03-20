@@ -4,7 +4,7 @@ import { SiLinkedin, SiGithub } from 'react-icons/si'
 
 const Footer: React.FC = () => {
     return (
-        <footer className='bg-[#0A0A0A] w-full py-[60px] flex justify-center'>
+        <footer className='dark:bg-[#0A0A0A] bg-[#171B26] w-full py-[60px] flex justify-center transition-colors duration-300'>
             <div className='grid grid-cols-2 gap-[600px]'>
                 <div className="flex flex-col">
                     <div className='flex flex-row items-center text-white mb-[35px] group'>

@@ -1,4 +1,6 @@
 import '@/styles/globals.css'
+import { store } from '../../redux/store'
+import { Provider } from 'react-redux'
 import type { AppProps } from 'next/app'
 import { Rubik, Oswald } from 'next/font/google';
 
@@ -15,7 +17,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           }
         `}
     </style>
-    <Component {...pageProps} />
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
   </>
 }
 
