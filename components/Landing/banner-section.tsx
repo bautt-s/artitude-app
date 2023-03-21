@@ -1,6 +1,7 @@
 import ToggleDark from './toggle-dark'
 import { BsPaletteFill } from 'react-icons/bs'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 const Banner: React.FC = () => {
     return (
@@ -43,7 +44,9 @@ const Banner: React.FC = () => {
                         initial={{ opacity: 0, translateY: -20 }}
                         whileInView={{ opacity: 1, translateY: 0 }}
                         transition={{ delay: 0.15, duration: 0.35 }}>
-                        Art up!
+                        <Link href='/browse'>
+                            Art up!
+                        </Link>
                     </motion.button>
                 </div>
 

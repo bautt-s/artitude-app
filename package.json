@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.10",
     "@next/font": "^13.2.3",
     "@prisma/client": "^4.10.1",
     "@reduxjs/toolkit": "^1.9.3",

@@ -5,7 +5,7 @@ export interface DarkModeState {
 }
 
 const initialState: DarkModeState = {
-    toggled: true
+    toggled: false
 }
 
 export const darkSlice = createSlice({
