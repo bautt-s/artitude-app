@@ -1,5 +1,6 @@
 // context type for parameters
 import { Context } from './context'
+import axios from 'axios'
 
 // interface to define argument objects passed to resolvers
 interface argsGetUnique { id: string }

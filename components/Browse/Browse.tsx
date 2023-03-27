@@ -1,38 +1,16 @@
+import CardLayout from './card-layout';
 import ToggleDark from '../Landing/toggle-dark'
 import { BsPaletteFill } from 'react-icons/bs'
 import Link from 'next/link';
-
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import { PropType } from '@/pages/browse';
+import Filters from './Filters';
+import Footer from 'components/Landing/footer-section';
 
-import { gql, useQuery } from '@apollo/client';
-
-
-
-const Browse: React.FC = () => {
-    interface Artpiece {
-        name: string,
-        type: string,
-        year: number,
-        image: string,
-        description: string
-    }
-
-    const AllArtworksQuery = gql`
-    query {
-        getAllArtpieces {
-            name
-            type
-            year
-            image
-            description
-        }
-    }
-    `
-
-    const { data, error, loading } = useQuery(AllArtworksQuery)
+const Browse = (props: PropType) => {
     const darkMode = useSelector((state: RootState) => state.darkMode.toggled)
-    console.log(data)
+
     return (
         <div className={darkMode ? 'dark' : 'light'}>
             <header className="w-full h-[80px] dark:bg-[#0A0A0A] bg-[#171B26] text-white items-center border-b-[#FDDD96] border-b-2
@@ -53,11 +31,18 @@ const Browse: React.FC = () => {
                 </div>
             </header>
 
-            {data?.getAllArtpieces.map((aw: Artpiece, index: number) => {
-                    return (
-                        <div key={index}>aw.name</div>
-                    )
-            })}
+            <div className='flex flex-col items-center pb-[80px] dark:bg-[#171B26] transition-colors duration-300'>
+                <div className='w-fit'>
+                    <h1 className='mr-auto font-oswald text-4xl mt-[40px] mb-[40px] dark:text-white'>Original Artpieces Gallery</h1>
+
+                    <div className='flex flex-row'>
+                        <Filters />
+                        <CardLayout data={props.data} />
+                    </div>
+                </div>
+            </div>
+
+            <Footer />
         </div>
     )
 }
