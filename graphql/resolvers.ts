@@ -1,10 +1,16 @@
 // context type for parameters
 import { Context } from './context'
-import axios from 'axios'
 
 // interface to define argument objects passed to resolvers
 interface argsGetUnique { id: string }
 interface argsGetByName { name: string }
+interface argsGetSorted {
+    data: {
+        sort: 'name' | 'artist' | 'year',
+        order: 'asc' | 'desc'
+        artistCountry: string
+    }
+}
 
 export const resolvers = {
     Query: {
@@ -17,6 +23,22 @@ export const resolvers = {
         getAllAuthors: async (_parent: undefined, _args: undefined, ctx: Context) => await ctx.prisma.author.findMany({
             include: {
                 pieces: true
+            }
+        }),
+
+        getArtpiecesSorted: async (_parent: undefined, args: argsGetSorted, ctx: Context) => await ctx.prisma.artpiece.findMany({
+            orderBy: {
+                [args.data.sort]: args.data.order
+            },
+
+            where: {
+                author: args.data.artistCountry ? {
+                    country: args.data.artistCountry
+                } : { name: { contains: '' }}
+            },
+
+            include: {
+                author: true
             }
         }),
 

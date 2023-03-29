@@ -1,25 +1,20 @@
 import Browse from '../../../components/Browse/Browse'
-import { gql } from '@apollo/client';
-import apolloClient from 'lib/apollo';
-import { Artpiece } from 'components/Browse/card-layout';
 import Head from 'next/head';
+import { Suspense } from 'react';
 
-export type PropType = {
-    data: {
-        getAllArtpieces: Artpiece[]
-    }
-}
-
-export default function BrowsePage(props: PropType) {
+export default function BrowsePage() {
     return <>
         <Head>
             <title>artitude · browse</title>
         </Head>
-        <Browse data={props.data} />
+        <Suspense fallback={<div>Page is loading</div>}>
+            <Browse />
+        </Suspense>
+        
     </>
 }
 
-export async function getServerSideProps() {
+/*export async function getServerSideProps() {
     // querying database via SSR
     const { data } = await apolloClient.query({
         query: gql`
@@ -40,4 +35,4 @@ export async function getServerSideProps() {
     return {
         props: { data }
     };
-}
+}*/

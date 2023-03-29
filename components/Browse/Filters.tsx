@@ -1,5 +1,9 @@
 import { FiSearch } from 'react-icons/fi'
 
+const handleSort = () => {
+    return null
+}
+
 const Filters: React.FC = () => {
     return (
         <div className='mr-[40px]'>
@@ -16,11 +20,10 @@ const Filters: React.FC = () => {
             <div className="flex flex-col font-rubik mb-[20px]">
                 <span className="text-xl tracking-wide dark:text-white">Sort By:</span>
 
-                <select name="countries" id="countries" className="w-[300px] border-2 border-l-neutral-400 py-[5px] rounded mt-[5px]">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                <select onChange={handleSort} name="countries" id="countries" className="w-[300px] border-2 border-l-neutral-400 py-[5px] rounded mt-[5px]">
+                    <option value="volvo">Name</option>
+                    <option value="saab">Artist</option>
+                    <option value="mercedes">Year</option>
                 </select>
             </div>
 

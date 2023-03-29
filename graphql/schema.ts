@@ -1,5 +1,6 @@
 import  { gql }  from  "apollo-server-micro"; 
 
+
 export const typeDefs = gql`
     type Artpiece {
         id: ID
@@ -25,6 +26,12 @@ export const typeDefs = gql`
         pieces: [Artpiece]
     }
 
+    input DataSort {
+        sort: String!
+        order: String!
+        artistCountry: String!
+    }
+
     type Query {
         getAllArtpieces: [Artpiece]
         getAllAuthors: [Author]
@@ -32,4 +39,5 @@ export const typeDefs = gql`
         getAuthorById(id: String!): Author!
         getArtpiecesByName(name: String): [Artpiece]
         getAuthorsByName(name: String): [Author]
+        getArtpiecesSorted(data: DataSort): [Artpiece]
     }`

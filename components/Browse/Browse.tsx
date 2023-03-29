@@ -4,11 +4,10 @@ import { BsPaletteFill } from 'react-icons/bs'
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { PropType } from '@/pages/browse';
 import Filters from './Filters';
 import Footer from 'components/Landing/footer-section';
 
-const Browse = (props: PropType) => {
+const Browse = () => {
     const darkMode = useSelector((state: RootState) => state.darkMode.toggled)
 
     return (
@@ -37,7 +36,7 @@ const Browse = (props: PropType) => {
 
                     <div className='flex flex-row'>
                         <Filters />
-                        <CardLayout data={props.data} />
+                        <CardLayout />
                     </div>
                 </div>
             </div>
