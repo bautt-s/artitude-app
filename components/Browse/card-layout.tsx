@@ -1,4 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
+import { useSelector } from 'react-redux';
+import { RootState } from 'redux/store';
 import ArtpieceCard from './card-artwork';
 
 export interface Artpiece {
@@ -13,22 +15,26 @@ export interface Artpiece {
     }
 }
 
-const artpiecesQuery = gql`
-query {
-    getAllArtpieces {
-        name
-        type
-        dimensions
-        year
-        image
-        author {
-            name
-        }
-    }
-}`
-
 const CardLayout = () => {
-    const { data, loading, error } = useQuery(artpiecesQuery)
+    const sortArguments = useSelector((state: RootState) => state.artDisplaySlice.sortArguments)
+    
+    const artpiecesQuery = gql`
+    query artpiecesQuery($sortArguments: DataSort){
+        getArtpiecesSorted(data: $sortArguments) {
+            name
+            type
+            dimensions
+            year
+            image
+            author {
+                name
+            }
+        }
+    }`
+
+    const { data, loading, error } = useQuery(artpiecesQuery, {
+        variables: { sortArguments }
+    })
     const loadingPlaceholder = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     if (error) return <div>There was an error.</div>
@@ -51,7 +57,7 @@ const CardLayout = () => {
 
     return (
         <div className='grid grid-cols-3 gap-8 w-fit'>
-            {data.getAllArtpieces.map((ap: Artpiece, index: number) => {
+            {data.getArtpiecesSorted.map((ap: Artpiece, index: number) => {
                 return (
                     <ArtpieceCard key={index} name={ap.name} image={ap.image} year={ap.year} author={ap.author.name} dimensions={ap.dimensions} />
                 )

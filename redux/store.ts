@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import darkReducer from './slices/darkSlice'
+import artDisplayReducer from './slices/displayArt'
 
 export const store = configureStore({
   reducer: {
-    darkMode: darkReducer
+    darkMode: darkReducer,
+    artDisplaySlice: artDisplayReducer
   },
 })
 

@@ -30,6 +30,7 @@ export const typeDefs = gql`
         sort: String!
         order: String!
         artistCountry: String!
+        search: String!
     }
 
     type Query {

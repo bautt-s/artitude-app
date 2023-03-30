@@ -9,6 +9,7 @@ interface argsGetSorted {
         sort: 'name' | 'artist' | 'year',
         order: 'asc' | 'desc'
         artistCountry: string
+        search: string
     }
 }
 
@@ -27,14 +28,20 @@ export const resolvers = {
         }),
 
         getArtpiecesSorted: async (_parent: undefined, args: argsGetSorted, ctx: Context) => await ctx.prisma.artpiece.findMany({
-            orderBy: {
+            orderBy: args.data.sort !== 'artist' ? {
                 [args.data.sort]: args.data.order
+            } : {
+                author: { name: args.data.order } 
             },
 
             where: {
                 author: args.data.artistCountry ? {
                     country: args.data.artistCountry
-                } : { name: { contains: '' }}
+                } : { name: { contains: '' }},
+
+                name: {
+                    contains: args.data.search ? args.data.search : ''
+                }
             },
 
             include: {

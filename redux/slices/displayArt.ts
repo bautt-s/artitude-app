@@ -1,19 +1,39 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface artDisplayState {
-    toggled: boolean
+    sortArguments: {
+        sort: "name" | "artist" | "year",
+        order: "asc" | "desc",
+        artistCountry: string,
+        search: string
+    }
 }
 
 const initialState: artDisplayState = {
-    toggled: false
+    sortArguments: {
+        sort: "name",
+        order: "asc",
+        artistCountry: "",
+        search: ""
+    }
 }
 
 export const artDisplaySlice = createSlice({
-    name: 'artDisplaySlice',
+    name: "artDisplaySlice",
     initialState,
     reducers: {
-        invert: (state) => {
-            state.toggled = ! state.toggled
+        sortRequest: (state, action) => {
+            state.sortArguments = {
+                ...state.sortArguments,
+                sort: action.payload.sort,
+                order: action.payload.order,
+                artistCountry: action.payload.artistCountry,
+                search: action.payload.search
+            }
         }
     }
 })
+
+export const { sortRequest } = artDisplaySlice.actions
+
+export default artDisplaySlice.reducer
