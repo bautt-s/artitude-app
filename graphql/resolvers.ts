@@ -31,13 +31,13 @@ export const resolvers = {
             orderBy: args.data.sort !== 'artist' ? {
                 [args.data.sort]: args.data.order
             } : {
-                author: { name: args.data.order } 
+                author: { name: args.data.order }
             },
 
             where: {
                 author: args.data.artistCountry ? {
                     country: args.data.artistCountry
-                } : { name: { contains: '' }},
+                } : { name: { contains: '' } },
 
                 name: {
                     contains: args.data.search ? args.data.search : '',
@@ -80,7 +80,7 @@ export const resolvers = {
                     contains: args.name
                 }
             },
-            
+
             include: {
                 pieces: true
             }

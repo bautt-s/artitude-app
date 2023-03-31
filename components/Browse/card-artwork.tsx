@@ -1,4 +1,7 @@
+import Link from "next/link"
+
 type ArtpieceCardProps = {
+    id: string,
     name: string,
     image: string,
     year: number,
@@ -7,10 +10,10 @@ type ArtpieceCardProps = {
 }
 
 const ArtpieceCard: React.FC<ArtpieceCardProps> = (props) => {
-    const { name, image, year, author, dimensions } = props
+    const { id, name, image, year, author, dimensions } = props
 
     return (
-        <div className='font-rubik w-fit group'>
+        <Link className='font-rubik w-fit group' href={`/browse/art/${id}`}>
             <img className='object-cover w-[250px] h-[250px] group-hover:opacity-70 dark:group-hover:opacity-50 transition-opacity duration-100
             border-double border-[6px] border-[#171B26] dark:border-[#FDDD96]' src={image} />
 
@@ -20,7 +23,7 @@ const ArtpieceCard: React.FC<ArtpieceCardProps> = (props) => {
             
             <span className="group-hover:text-[#808080] dark:group-hover:text-[#a1a1a1] dark:text-white">by {author} - {year}</span>
             <h4 className="text-[#808080] dark:text-[#a1a1a1]">{dimensions}</h4>
-        </div>
+        </Link>
     )
 }
 

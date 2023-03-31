@@ -5,6 +5,7 @@ import ArtpieceCard from './card-artwork';
 
 export interface Artpiece {
     __typename: string,
+    id: string,
     name: string,
     year: number,
     image: string,
@@ -21,6 +22,7 @@ const CardLayout = () => {
     const artpiecesQuery = gql`
     query artpiecesQuery($sortArguments: DataSort){
         getArtpiecesSorted(data: $sortArguments) {
+            id
             name
             type
             dimensions
@@ -35,6 +37,8 @@ const CardLayout = () => {
     const { data, loading, error } = useQuery(artpiecesQuery, {
         variables: { sortArguments }
     })
+
+    // used to map loading skeleton
     const loadingPlaceholder = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     if (error) return <div>There was an error.</div>
@@ -59,7 +63,7 @@ const CardLayout = () => {
         <div className='grid lg:grid-cols-3 grid-cols-2 gap-8 w-fit'>
             {data.getArtpiecesSorted.map((ap: Artpiece, index: number) => {
                 return (
-                    <ArtpieceCard key={index} name={ap.name} image={ap.image} year={ap.year} author={ap.author.name} dimensions={ap.dimensions} />
+                    <ArtpieceCard key={index} id={ap.id} name={ap.name} image={ap.image} year={ap.year} author={ap.author.name} dimensions={ap.dimensions} />
                 )
             })}
         </div>

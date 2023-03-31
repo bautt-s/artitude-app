@@ -36,7 +36,7 @@ export const typeDefs = gql`
     type Query {
         getAllArtpieces: [Artpiece]
         getAllAuthors: [Author]
-        getArtpieceById(id: String!): Artpiece!
+        getArtpieceById(id: String): Artpiece
         getAuthorById(id: String!): Author!
         getArtpiecesByName(name: String): [Artpiece]
         getAuthorsByName(name: String): [Author]

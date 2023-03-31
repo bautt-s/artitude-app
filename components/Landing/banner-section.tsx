@@ -44,7 +44,7 @@ const Banner: React.FC = () => {
                         initial={{ opacity: 0, translateY: -20 }}
                         whileInView={{ opacity: 1, translateY: 0 }}
                         transition={{ delay: 0.15, duration: 0.35 }}>
-                        <Link href='/browse'>
+                        <Link href='/browse/art'>
                             Art up!
                         </Link>
                     </motion.button>
