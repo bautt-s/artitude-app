@@ -61,13 +61,13 @@ const Filters: React.FC = () => {
     const countriesDisplayed: string[] = data ? Array.from(new Set(data?.getAllAuthors.map((author: Author) => author.country))) : ['Loading...']
 
     return (
-        <div className='mr-[40px]'>
+        <div className='md:mr-[40px]'>
             <div className="mb-[20px] font-rubik">
                 <span className="text-xl tracking-wide dark:text-white">Search by Name</span>
                 <form onSubmit={handleSearch} className='border-2 rounded pr-[10px] mt-[5px] flex flex-row dark:bg-white'>
                     <input type="text" placeholder="Search.." value={searchInput} onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
                            className="w-[260px] py-[5px] pl-[10px] border-r-0 bg-white" />
-                    <button type="submit" className='flex items-center justify-center'>
+                    <button type="submit" className='flex items-center justify-center ml-auto'>
                         <FiSearch className='text-xl ml-[7px]' />
                     </button>
                 </form>
@@ -77,7 +77,8 @@ const Filters: React.FC = () => {
                 <span className="text-xl tracking-wide dark:text-white">Sort By:</span>
 
                 <div className='flex flex-row'>
-                    <select onChange={(e: React.FormEvent<HTMLSelectElement>) => handleSort(e)} name="countries" id="countries" className="w-[220px] border-2 py-[5px] rounded mt-[5px] bg-white">
+                    <select onChange={(e: React.FormEvent<HTMLSelectElement>) => handleSort(e)} name="countries" id="countries"
+                    className="md:w-[220px] w-full border-2 py-[5px] rounded mt-[5px] bg-white">
                         <option value="name">Name</option>
                         <option value="artist">Artist</option>
                         <option value="year">Year</option>
@@ -101,7 +102,7 @@ const Filters: React.FC = () => {
                 <span className="text-xl tracking-wide dark:text-white">Artist From:</span>
 
                 <select onChange={(e: React.FormEvent<HTMLSelectElement>) => handleCountry(e)} name="countries" id="countries"
-                        className="w-[300px] border-2 py-[5px] rounded mt-[5px] bg-white">
+                        className="md:w-[300px] w-full border-2 py-[5px] rounded mt-[5px] bg-white md:mb-0 mb-[40px]">
                             <option value=''>None</option>
                             {countriesDisplayed.map((country: string, index: number) => <option key={index} value={country}>{country}</option>)}
                 </select>

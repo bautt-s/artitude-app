@@ -40,7 +40,8 @@ export const resolvers = {
                 } : { name: { contains: '' }},
 
                 name: {
-                    contains: args.data.search ? args.data.search : ''
+                    contains: args.data.search ? args.data.search : '',
+                    mode: 'insensitive'
                 }
             },
 

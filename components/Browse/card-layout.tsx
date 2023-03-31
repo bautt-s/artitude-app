@@ -56,7 +56,7 @@ const CardLayout = () => {
     )
 
     return (
-        <div className='grid grid-cols-3 gap-8 w-fit'>
+        <div className='grid lg:grid-cols-3 grid-cols-2 gap-8 w-fit'>
             {data.getArtpiecesSorted.map((ap: Artpiece, index: number) => {
                 return (
                     <ArtpieceCard key={index} name={ap.name} image={ap.image} year={ap.year} author={ap.author.name} dimensions={ap.dimensions} />
