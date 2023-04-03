@@ -4,11 +4,21 @@ import { Context } from './context'
 // interface to define argument objects passed to resolvers
 interface argsGetUnique { id: string }
 interface argsGetByName { name: string }
-interface argsGetSorted {
+
+interface argsArtpiecesSorted {
     data: {
         sort: 'name' | 'artist' | 'year',
         order: 'asc' | 'desc'
         artistCountry: string
+        search: string
+    }
+}
+
+interface argsAuthorsSorted {
+    data: {
+        sort: 'name' | 'year',
+        order: 'asc' | 'desc',
+        artistCountry: string,
         search: string
     }
 }
@@ -27,7 +37,7 @@ export const resolvers = {
             }
         }),
 
-        getArtpiecesSorted: async (_parent: undefined, args: argsGetSorted, ctx: Context) => await ctx.prisma.artpiece.findMany({
+        getArtpiecesSorted: async (_parent: undefined, args: argsArtpiecesSorted, ctx: Context) => await ctx.prisma.artpiece.findMany({
             orderBy: args.data.sort !== 'artist' ? {
                 [args.data.sort]: args.data.order
             } : {
@@ -60,12 +70,6 @@ export const resolvers = {
             }
         }),
 
-        getAuthorById: async (_parent: undefined, args: argsGetUnique, ctx: Context) => await ctx.prisma.author.findUnique({
-            where: {
-                id: args.id
-            }
-        }),
-
         getArtpiecesByName: async (_parent: undefined, args: argsGetByName, ctx: Context) => await ctx.prisma.artpiece.findMany({
             where: {
                 name: {
@@ -89,5 +93,26 @@ export const resolvers = {
                 pieces: true
             }
         }),
+
+        getAuthorById: async (_parent: undefined, args: argsGetUnique, ctx: Context) => await ctx.prisma.author.findUnique({
+            where: {
+                id: args.id
+            }
+        }),
+
+        getAuthorsSorted: async (_parent: undefined, args: argsAuthorsSorted, ctx: Context) => await ctx.prisma.author.findMany({
+            orderBy: {
+                [args.data.sort]: args.data.order
+            },
+
+            where: {
+                country: args.data.artistCountry ? args.data.artistCountry : { contains: '' },
+
+                name: {
+                    contains: args.data.search ? args.data.search : '',
+                    mode: 'insensitive'
+                }
+            }
+        })
     }
 }

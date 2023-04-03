@@ -41,4 +41,5 @@ export const typeDefs = gql`
         getArtpiecesByName(name: String): [Artpiece]
         getAuthorsByName(name: String): [Author]
         getArtpiecesSorted(data: DataSort): [Artpiece]
+        getAuthorsSorted(data: DataSort): [Author]
     }`

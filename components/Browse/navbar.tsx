@@ -12,9 +12,15 @@ const Navbar = () => {
             </Link>
 
             <ul className='flex-row list-disc list-inside gap-3 font-rubik w-fit md:text-lg sm:text-md text-sm sm:flex hidden'>
-                <li className='hover:underline underline-offset-4 decoration-[#FDDD96] list-none'>artworks</li>
-                <li className='hover:underline underline-offset-4 decoration-[#FDDD96]'>authors</li>
-                <li className='hover:underline underline-offset-4 decoration-[#FDDD96]'>submit</li>
+                <li className='hover:underline underline-offset-4 decoration-[#FDDD96] list-none'>
+                    <Link href='/browse/art'>artworks</Link>
+                </li>
+                <li className='hover:underline underline-offset-4 decoration-[#FDDD96]'>
+                    <Link href='/browse/authors'>authors</Link>
+                </li>
+                <li className='hover:underline underline-offset-4 decoration-[#FDDD96]'>
+                <Link href='/submit'>submit</Link>
+                </li>
             </ul>
 
             <div className="w-fit">

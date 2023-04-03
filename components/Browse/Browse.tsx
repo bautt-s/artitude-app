@@ -10,7 +10,7 @@ const Browse = () => {
 
     return (
         <div className={darkMode ? 'dark' : 'light'}>
-            <div className={`dark:bg-[#171B26] flex flex-col`}>
+            <div className="dark:bg-[#171B26] flex flex-col min-h-screen">
                 <Navbar />
 
                 <div className='flex flex-col items-center pb-[80px]  transition-colors duration-300'>
@@ -24,7 +24,7 @@ const Browse = () => {
                     </div>
                 </div>
 
-                <div className='flex h-full justify-end items-end'>
+                <div className='flex h-full justify-end items-end mt-auto'>
                     <Footer />
                 </div>
             </div>
