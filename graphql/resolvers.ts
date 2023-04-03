@@ -53,6 +53,10 @@ export const resolvers = {
         getArtpieceById: async (_parent: undefined, args: argsGetUnique, ctx: Context) => await ctx.prisma.artpiece.findUnique({
             where: {
                 id: args.id
+            },
+
+            include: {
+                author: true
             }
         }),
 
