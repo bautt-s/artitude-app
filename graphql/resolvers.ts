@@ -97,6 +97,10 @@ export const resolvers = {
         getAuthorById: async (_parent: undefined, args: argsGetUnique, ctx: Context) => await ctx.prisma.author.findUnique({
             where: {
                 id: args.id
+            },
+
+            include: {
+                pieces: true
             }
         }),
 

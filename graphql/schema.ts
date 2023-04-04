@@ -37,7 +37,7 @@ export const typeDefs = gql`
         getAllArtpieces: [Artpiece]
         getAllAuthors: [Author]
         getArtpieceById(id: String): Artpiece
-        getAuthorById(id: String!): Author!
+        getAuthorById(id: String): Author
         getArtpiecesByName(name: String): [Artpiece]
         getAuthorsByName(name: String): [Author]
         getArtpiecesSorted(data: DataSort): [Artpiece]
