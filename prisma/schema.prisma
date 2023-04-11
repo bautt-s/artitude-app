@@ -14,7 +14,7 @@ model Artpiece {
   createdAt   DateTime    @default(now())
   image       String      @default("https://img.freepik.com/free-vector/images-concept-illustration_114360-298.jpg?w=826&t=st=1677560232~exp=1677560832~hmac=62d93f22492ccd0af71e9d40365b50733b2031ad24f08e049aba6302a119cfab")
   type        String
-  name        String
+  name        String      
   dimensions  String?
   description String?
   buyable     Boolean

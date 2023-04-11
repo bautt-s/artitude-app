@@ -16,7 +16,8 @@ export const typeDefs = gql`
     }
 
     type Author {
-        id: ID
+        id: ID!
+        authorId: ID!
         name: String!
         image: String!
         country: String!
@@ -42,4 +43,30 @@ export const typeDefs = gql`
         getAuthorsByName(name: String): [Author]
         getArtpiecesSorted(data: DataSort): [Artpiece]
         getAuthorsSorted(data: DataSort): [Author]
+    }
+
+    input DataAuthor {
+        birthYear: Int!
+        country: String!
+        deathYear: Int
+        description: String!
+        image: String
+        name: String!
+    }
+
+    input DataArtpiece {
+        authorId: String!
+        buyable: Boolean!
+        description: String
+        image: String!
+        name: String!
+        price: Int
+        type: String!
+        year: Int!
+        dimensions: String
+    }
+    
+    type Mutation {
+        createAuthor(data: DataAuthor): Author,
+        createArtpiece(data: DataArtpiece): Artpiece
     }`
