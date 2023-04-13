@@ -1,5 +1,5 @@
 import CountrySelect from "./CountrySelect"
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
 
 const validateInput = (input: {
@@ -21,13 +21,15 @@ const validateInput = (input: {
     }
 
     if (!input.name) err.name = true
-    if (input.birthYear === '') err.birthYear = true
+    if (input.birthYear) err.birthYear = true
     if (input.country === 'None') err.country = true
 
     return err
 }
 
 const SubmitAuthor: React.FC = () => {
+    const countryBox = useRef<HTMLSelectElement>(null)
+
     const [fieldsValue, setFieldsValue] = useState({
         name: '',
         image: '',
@@ -37,7 +39,7 @@ const SubmitAuthor: React.FC = () => {
         description: ''
     })
 
-    const [errors, setErrors] = useState(validateInput({...fieldsValue}))
+    const [errors, setErrors] = useState(validateInput({ ...fieldsValue }))
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         // regex used for limiting user input to only numeric on birth and death year fields.
@@ -59,17 +61,36 @@ const SubmitAuthor: React.FC = () => {
         }
     }`
 
-    const [mutateAuthor, { error }] = useMutation(sendAuthor)
+    const [mutateAuthor, { loading, error }] = useMutation(sendAuthor)
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        
+
         if (!(errors.birthYear || errors.country || errors.name)) {
-            mutateAuthor({ variables: { authorArguments: {
-                ...fieldsValue, birthYear: parseInt(fieldsValue.birthYear), deathYear: parseInt(fieldsValue.deathYear)
-            }}})
+            mutateAuthor({
+                variables: {
+                    authorArguments: {
+                        ...fieldsValue, birthYear: parseInt(fieldsValue.birthYear), deathYear: parseInt(fieldsValue.deathYear)
+                    }
+                }
+            })
+
+            setFieldsValue({
+                name: '',
+                image: '',
+                birthYear: '',
+                deathYear: '',
+                country: 'None',
+                description: ''
+            })
+
+            if (countryBox.current) countryBox.current.selectedIndex = 0;
         }
     }
+
+    useEffect(() => {
+        setErrors(validateInput(fieldsValue))
+    }, [loading])
 
     return (
         <form onSubmit={(e) => handleSubmit(e)} className="w-fit">
@@ -99,7 +120,7 @@ const SubmitAuthor: React.FC = () => {
                 </div>
             </div>
 
-            <CountrySelect value={fieldsValue} handler={handleChange} errCountry={errors.country} />
+            <CountrySelect value={fieldsValue} handler={handleChange} errCountry={errors.country} ref={countryBox} />
 
             <div className="flex flex-col mt-[20px]">
                 <span className="dark:text-white">Description</span>
@@ -108,8 +129,8 @@ const SubmitAuthor: React.FC = () => {
             </div>
 
             <button className={`mt-[35px] px-[25px] py-[5px] rounded-md transition-color duration-300 text-lg w-full md:w-auto
-            ${!(errors.birthYear || errors.country || errors.name) ? 'bg-[#FDDD96] hover:bg-[#ffd372] shadow-md' : 'bg-[#ccad6e] cursor-no-drop'}`} 
-            type='submit'>Submit</button>
+            ${!(errors.birthYear || errors.country || errors.name) ? 'bg-[#FDDD96] hover:bg-[#ffd372] shadow-md' : 'bg-[#ccad6e] cursor-no-drop'}`}
+                type='submit'>Submit</button>
         </form>
     )
 }

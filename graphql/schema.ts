@@ -61,7 +61,7 @@ export const typeDefs = gql`
         image: String!
         name: String!
         price: Int
-        type: String!
+        type: String
         year: Int!
         dimensions: String
     }

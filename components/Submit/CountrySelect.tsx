@@ -10,14 +10,15 @@ export type CountryProps = {
 
     handler: Function
     errCountry: boolean
+    ref: React.RefObject<HTMLSelectElement>
 }
 
 const CountrySelect: React.FC<CountryProps> = (props) => {
     return (
         <div className="flex flex-col mt-[20px]">
             <span className="dark:text-white">Country <strong className={props.errCountry ? 'inline-block text-[#586577] dark:text-[#8695aa]' : 'hidden'}>- Required</strong></span>
-            <select className="w-full border-2 rounded py-[2px]" name='country' defaultValue='None'
-            value={props.value.country} onChange={(e) => props.handler(e)} >
+            <select className="w-full border-2 rounded py-[2px] px-[5px]" name='country' defaultValue='None'
+            value={props.value.country} onChange={(e) => props.handler(e)} ref={props.ref} >
                 <option value="None" disabled>None</option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Albania">Albania</option>
