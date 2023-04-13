@@ -35,7 +35,7 @@ const Banner: React.FC = () => {
                         whileInView={{ opacity: 1, translateY: 0 }}
                         transition={{ delay: 0.25, duration: 0.35 }}>
                         Are you an artist looking for inspiration? Maybe just an art aficionado?
-                        <br />Doesn't matter: in Artitude you will find whatever artpiece you are looking for.
+                        <br />Doesn&apos;t matter: in Artitude you will find whatever artpiece you are looking for.
                     </motion.p>
 
                     <motion.button
