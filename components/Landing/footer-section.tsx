@@ -25,9 +25,9 @@ const Footer: React.FC = () => {
             <div className='ml-auto'>
                 <ul className='text-white font-rubik text-xl text-right'>
                     <li className='text-2xl font-bold mb-[10px]'>Pages</li>
-                    <li className='mb-[5px] hover:underline underline-offset-4 decoration-[#FDDD96]'>Artworks</li>
-                    <li className='mb-[5px] hover:underline underline-offset-4 decoration-[#FDDD96]'>Authors</li>
-                    <li className='hover:underline underline-offset-4 decoration-[#FDDD96]'>Submit</li>
+                    <li className='mb-[5px] hover:underline underline-offset-4 decoration-[#FDDD96]'><Link href='/browse/art'>Artworks</Link></li>
+                    <li className='mb-[5px] hover:underline underline-offset-4 decoration-[#FDDD96]'><Link href='/browse/authors'>Authors</Link></li>
+                    <li className='hover:underline underline-offset-4 decoration-[#FDDD96]'><Link href='/submit'>Submit</Link></li>
                 </ul>
             </div>
         </footer>

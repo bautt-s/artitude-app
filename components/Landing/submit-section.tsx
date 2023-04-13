@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 const Submit: React.FC = () => {
     return (
@@ -16,9 +17,11 @@ const Submit: React.FC = () => {
                     <h1 className='font-rubik text-3xl dark:text-white font-bold mt-[10px] mb-[10px]'>Want to submit an Artpiece or Artist?</h1>
                     <p className='font-rubik text-2xl dark:text-white'>Maybe you feel like we are missing something or someone.<br /> In that case, we invite you to expand our database!</p>
 
-                    <button className='text-xl font-rubik text-[#171B26] font-bold mt-[40px] bg-[#f3d490] px-[20px] py-[10px] rounded-lg hover:bg-[#ddbf7f] active:bg-[#bea369] transition-all duration-300'>
-                        Collaborate
-                    </button>
+                    <Link href='/submit'>
+                        <button className='text-xl font-rubik text-[#171B26] font-bold mt-[40px] bg-[#f3d490] px-[20px] py-[10px] rounded-lg hover:bg-[#ddbf7f] active:bg-[#bea369] transition-all duration-300'>
+                            Collaborate
+                        </button>
+                    </Link>
                 </motion.div>
             </div>
         </div>

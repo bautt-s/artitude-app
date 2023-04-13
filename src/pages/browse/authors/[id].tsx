@@ -17,6 +17,7 @@ export default function AuthorPage() {
             image
             name
             pieces {
+                id
                 name
                 image
                 dimensions

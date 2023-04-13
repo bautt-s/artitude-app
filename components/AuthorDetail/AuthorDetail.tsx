@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
+import Link from 'next/link'
 
 // type of props passed to component
 type PropsDetail = {
@@ -19,6 +20,7 @@ type PropsDetail = {
             deathYear: number,
             description: string,
             pieces: {
+                id: string,
                 name: string,
                 image: string,
                 dimensions: string
@@ -88,7 +90,7 @@ const AuthorDetail: React.FC<PropsDetail> = (props) => {
                         There was an error.
                     </div>}
 
-                <div className="bg-white dark:bg-[#171B26] overflow-hidden pt-[40px]">
+                {data?.getAuthorById.pieces.length ? <div className="bg-white dark:bg-[#171B26] overflow-hidden pt-[40px]">
                     <div className="mt-[25px] flex mx-auto flex-col pl-[40px] md:pl-[60px] lg:pl-[40px] xxl:px-[9%] w-screen">
                         <h2 className="font-oswald text-4xl mb-[30px] dark:text-white">Artpieces by this Artist</h2>
                         <Swiper
@@ -123,28 +125,30 @@ const AuthorDetail: React.FC<PropsDetail> = (props) => {
                             {data?.getAuthorById.pieces.map((p, index) => {
                                 return (
                                     <SwiperSlide key={index}>
-                                        <div className="w-[300px] h-fit pb-[20px] border-[2px] border-[#e6e6e6] dark:border-[#4d4c4b] drop-shadow-xl bg-white dark:bg-[#171B26]
+                                        <Link href={`/browse/art/${p.id}`}>
+                                            <div className="w-[300px] h-fit pb-[20px] border-[2px] border-[#e6e6e6] dark:border-[#4d4c4b] drop-shadow-xl bg-white dark:bg-[#171B26]
                                         rounded-xl dark:hover:border-[#FDDD96] hover:border-[#FDDD96] transition-all duration-200 group overflow-hidden">
-                                            <div className="w-full h-[250px] overflow-hidden">
-                                                <img src={p.image} 
-                                                className="w-full h-[250px] object-cover rounded-t-xl group-hover:rotate-2 group-hover:scale-105 transition-transform duration-300" />
-                                            </div>
-                                            
-                                            <div className="ml-[15px] dark:text-white">
-                                                <h2 className="font-oswald text-3xl mt-[20px] mb-[5px]">
-                                                    {p.name.length > 20 ? p.name.slice(0,20)+'...' : p.name}    
-                                                </h2>
+                                                <div className="w-full h-[250px] overflow-hidden">
+                                                    <img src={p.image}
+                                                        className="w-full h-[250px] object-cover rounded-t-xl group-hover:rotate-2 group-hover:scale-105 transition-transform duration-300" />
+                                                </div>
 
-                                                <span className="font-rubik text-xl">{p.dimensions}</span>
+                                                <div className="ml-[15px] dark:text-white">
+                                                    <h2 className="font-oswald text-3xl mt-[20px] mb-[5px]">
+                                                        {p.name.length > 20 ? p.name.slice(0, 20) + '...' : p.name}
+                                                    </h2>
+
+                                                    <span className="font-rubik text-xl">{p.dimensions}</span>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </Link>
                                     </SwiperSlide>
                                 )
                             })}
 
                         </Swiper>
                     </div>
-                </div>
+                </div> : null}
                 <Footer />
             </div>
         </div>

@@ -51,14 +51,20 @@ const Banner: React.FC = () => {
                 </div>
 
                 <div className='flex flex-row justify-center gap-3 mt-[80px]'>
-                    <img className='w-[500px] h-auto hover:scale-105 transition-all duration-300 drop-shadow-2xl'
-                        src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg/800px-Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg' />
+                    <Link href='/browse/art/641baddaefa48d83bd42a89b'>
+                        <img className='w-[500px] h-[640px] hover:scale-105 transition-all duration-300 drop-shadow-2xl object-cover'
+                            src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg/800px-Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg' />
+                    </Link>
 
-                    <img className="w-[500px] h-auto hover:scale-105 transition-all duration-300 drop-shadow-2xl"
-                        src='https://upload.wikimedia.org/wikipedia/commons/f/f3/Rembrandt_Christ_in_the_Storm_on_the_Lake_of_Galilee.jpg' />
+                    <Link href='/browse/art/641bae6aefa48d83bd42a8a2'>
+                        <img className="w-[500px] h-[640px] hover:scale-105 transition-all duration-300 drop-shadow-2xl object-cover"
+                            src='https://upload.wikimedia.org/wikipedia/commons/f/f3/Rembrandt_Christ_in_the_Storm_on_the_Lake_of_Galilee.jpg' />
+                    </Link>
 
-                    <img className='w-[500px] h-auto hover:scale-105 transition-all duration-300 drop-shadow-2xl'
-                        src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Fragonard%2C_The_Swing.jpg/800px-Fragonard%2C_The_Swing.jpg' />
+                    <Link href='/browse/art/641bad33efa48d83bd42a896'>
+                        <img className='w-[500px] h-[640px] hover:scale-105 transition-all duration-300 drop-shadow-2xl object-cover'
+                            src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Fragonard%2C_The_Swing.jpg/800px-Fragonard%2C_The_Swing.jpg' />
+                    </Link>
                 </div>
             </div>
         </div>

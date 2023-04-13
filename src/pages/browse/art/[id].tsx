@@ -17,6 +17,7 @@ export default function ArtpiecePage() {
             dimensions
             description
             author {
+                id
                 name
             }
         }

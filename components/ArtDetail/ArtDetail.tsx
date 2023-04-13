@@ -3,6 +3,7 @@ import Navbar from "components/Browse/navbar"
 import Footer from "components/Landing/footer-section"
 import { useSelector } from "react-redux"
 import { RootState } from "redux/store"
+import Link from "next/link"
 
 // type of props passed to component
 type PropsDetail = {
@@ -15,6 +16,7 @@ type PropsDetail = {
             dimensions: string,
             description: string,
             author: {
+                id: string
                 name: string
             }
         }
@@ -65,7 +67,9 @@ const ArtDetail: React.FC<PropsDetail> = (props) => {
                             <div className="md:ml-[30px] lg:ml-[60px] font-rubik dark:text-white ">
                                 <h1 className="font-oswald text-4xl mt-[20px] lg:mt-0">{`${data.getArtpieceById.name} - ${data.getArtpieceById.year}`}</h1>
                                 <h3 className="mt-[5px] text-lg dark:text-[#FDDD96]">{`${data.getArtpieceById.type} - ${data.getArtpieceById.dimensions}`}</h3>
-                                <h3>by <strong className="underline underline-offset-2 dark:decoration-[#FDDD96] decoration-[white] decoration-2">{data.getArtpieceById.author.name}</strong></h3>
+                                <h3>by <strong className="underline underline-offset-2 dark:decoration-[#FDDD96] decoration-[white] decoration-2">
+                                    <Link href={`/browse/authors/${data.getArtpieceById.author.id}`}>{data.getArtpieceById.author.name}</Link>
+                                </strong></h3>
                                 <p className="mt-[40px] text-justify max-w-[900px]">{data.getArtpieceById.description}</p>
                             </div>
                         }
