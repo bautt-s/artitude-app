@@ -133,7 +133,7 @@ const CountrySelect: React.FC<CountryProps> = (props) => {
                 <option value="Kazakhstan">Kazakhstan</option>
                 <option value="Kenya">Kenya</option>
                 <option value="Kiribati">Kiribati</option>
-                <option value="Democratic People&apos;s Republic of Korea">Korea, Democratic People's Republic of</option>
+                <option value="Democratic People&apos;s Republic of Korea">Korea, Democratic People&apos;s Republic of</option>
                 <option value="Korea">Korea, Republic of</option>
                 <option value="Kuwait">Kuwait</option>
                 <option value="Kyrgyzstan">Kyrgyzstan</option>
