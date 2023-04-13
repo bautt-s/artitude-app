@@ -65,7 +65,7 @@ const FilterAuthors: React.FC = () => {
             <div className="mb-[20px] font-rubik">
                 <span className="text-xl tracking-wide dark:text-white">Search by Name</span>
                 <form onSubmit={handleSearch} className='border-2 rounded pr-[10px] mt-[5px] flex flex-row dark:bg-white'>
-                    <input type="text" placeholder="Search.." value={searchInput} onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
+                    <input type="text" placeholder="Search.." value={searchInput} onChange={(e) => handleChange(e)}
                         className="w-[260px] py-[5px] pl-[10px] border-r-0 bg-white" />
                     <button type="submit" className='flex items-center justify-center ml-auto'>
                         <FiSearch className='text-xl ml-[7px]' />
