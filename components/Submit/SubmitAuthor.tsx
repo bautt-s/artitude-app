@@ -1,6 +1,7 @@
 import CountrySelect from "./CountrySelect"
 import { useEffect, useRef, useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
+import SubmitModal from './Modal';
 
 const validateInput = (input: {
     name: string,
@@ -29,6 +30,9 @@ const validateInput = (input: {
 
 const SubmitAuthor: React.FC = () => {
     const countryBox = useRef<HTMLSelectElement>(null)
+
+    const [showModal, setShowModal] = useState(false)
+    const handleModal = () => setShowModal(true)
 
     const [fieldsValue, setFieldsValue] = useState({
         name: '',
@@ -85,6 +89,7 @@ const SubmitAuthor: React.FC = () => {
             })
 
             if (countryBox.current) countryBox.current.selectedIndex = 0;
+            setShowModal(true)
         }
     }
 
@@ -94,6 +99,7 @@ const SubmitAuthor: React.FC = () => {
 
     return (
         <form onSubmit={(e) => handleSubmit(e)} className="w-fit">
+            {showModal ? <SubmitModal setOpenModal={setShowModal} error={error} creation={"Artpiece"} /> : null}
             <div className="grid grid-cols-2 gap-[20px] mt-[20px]">
                 <div className="flex flex-col">
                     <span className="dark:text-white">Name <strong className={errors.name ? 'inline-block text-[#586577] dark:text-[#8695aa]' : 'hidden'}>- Required</strong></span>

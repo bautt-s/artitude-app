@@ -16,7 +16,7 @@ const SubmitMain: React.FC = () => {
 
     return (
         <div className={darkMode ? 'dark' : 'light'}>
-            <div className="h-screen dark:bg-[#171B26] transition-colors duration-100">
+            <div className="dark:bg-[#171B26] transition-colors duration-100 h-screen">
                 <Navbar />
 
                 <div className="flex flex-col lg:flex-row items-center lg:items-stretch xl:items-center justify-center my-[40px] mx-auto w-fit lg:mx-0 lg:w-auto">
