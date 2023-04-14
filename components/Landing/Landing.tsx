@@ -15,7 +15,7 @@ const Landing: React.FC = () => {
             <Banner />
             <Features />
 
-            <div className='pt-[80px] pb-[140px] bg-gradient-to-b dark:from-[#0A0A0A] dark:to-[#171B26] bg-white transition-colors duration-300'>
+            <div className='pt-[80px] pb-[90px] md:pb-[140px] bg-gradient-to-b dark:from-[#0A0A0A] dark:to-[#171B26] bg-white transition-colors duration-300 overflow-x-hidden'>
                 <Artworks />
                 <Submit />
             </div>

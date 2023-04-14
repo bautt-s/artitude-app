@@ -10,14 +10,16 @@ const IMAGES: ArtworkCardProps['data'][] = [
 
 const Artworks: React.FC = () => {
     return (
-        <div className='w-full dark:bg-[#FDDD96] bg-[#95A4B9] pt-[80px] pb-[100px] flex flex-col mx-auto dark:text-[#0A0A0A] text-white'>
-            <div className='mx-auto'>
+        <div className='w-full dark:bg-[#FDDD96] bg-[#95A4B9] pt-[60px] lg:pt-[80px] pb-[50px] lg:pb-[100px] flex flex-col mx-auto dark:text-[#0A0A0A] text-white'>
+            <div className='flex flex-col mx-auto items-center'>
                 <div className='text-center mx-auto w-fit'>
                     <h1 className='text-3xl font-bold font-rubik mb-[10px]'>Featured Artworks</h1>
-                    <p className='text-2xl font-rubik w-[800px] mb-[40px]'>Take a look at our collection of featured pieces: artworks that will, without doubt, leave you amazed.</p>
+                    <p className='text-xl px-[30px] lg:px-0 md:text-2xl font-rubik lg:w-[800px] mb-[40px]'>
+                        Take a look at our collection of featured pieces: artworks that will, without doubt, leave you amazed.
+                    </p>
                 </div>
 
-                <div className='grid justify-center gap-16 grid-cols-4 w-fit'>
+                <div className='grid justify-center gap-4 md:gap-8 lg:gap-16 grid-cols-2 md:grid-cols-4 w-fit'>
                     {IMAGES.map((image, index) => {
                         return (
                             <motion.div key={index} className='group cursor-pointer transition duration-100'

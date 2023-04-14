@@ -29,18 +29,18 @@ const FEATURES: FeatureCardProps['data'][] = [{
 
 const Features: React.FC = () => {
     return (
-        <div className="pt-[120px] pb-[60px] dark:bg-[#0A0A0A] bg-white w-full transition-colors duration-300" >
+        <div className="px-[20px] xl:px-0 pt-[80px] lg:pt-[120px] pb-[0px] lg:pb-[60px] dark:bg-[#0A0A0A] bg-white w-full transition-colors duration-300">
             <div className='flex flex-col'>
                 <div className='mx-auto'>
                     <h2 className='text-lg font-bold font-rubik dark:text-[#FDDD96] text-[#e4c073]'>FEATURES</h2>
                     <h1 className='text-3xl font-bold font-rubik mt-[10px] mb-[10px] dark:text-white text-[#171B26]'>Main Features</h1>
 
-                    <div className='flex flex-col text-2xl font-rubik dark:text-white text-[#171B26]'>
-                        <span>Look into any type or style of artwork you are looking for. Filter them by any of their</span>
+                    <div className='flex flex-col text-xl md:text-2xl font-rubik dark:text-white text-[#171B26]'>
+                        <span className='pr-[20px] md:pr-0'>Look into any type or style of artwork you are looking for. Filter them by any of their</span>
                         <span>attributes and find out if, by any chance, they are currently in sale at the moment.</span>
                     </div>
 
-                    <div className='grid justify-center gap-4 grid-cols-4 mt-[60px]'>
+                    <div className='grid justify-center gap-2 lg:gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 mt-[60px]'>
                         {FEATURES.map((feature, index) => {
                             return (
                                 <motion.div
